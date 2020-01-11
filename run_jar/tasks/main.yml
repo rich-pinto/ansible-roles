@@ -1,0 +1,14 @@
+---
+- name: run jar
+  shell: bash /home/halodoc/ansible-roles/run_jar/files/run_jar.sh
+- name: Add cron for service status monitoring
+  cron:
+    name: "Check service status cron"
+    state: present
+    job: "bash /home/halodoc/ansible-roles/run_jar/files/run_jar.sh"
+- name: Create simpleapplication.service systemd unit file
+  copy: src=simpleapplication.service dest=/etc/systemd/system/
+- name: Change file permissions
+  file:
+    path: /etc/systemd/system/simpleapplication.service
+    mode: '0755'

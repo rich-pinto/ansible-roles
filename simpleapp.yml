@@ -1,0 +1,23 @@
+- name: Example Playbook
+  hosts: localhost
+  vars:
+    logrotate_scripts:
+      - name: simpleapplication
+        path: /var/log/simpleapplication.log
+        options:
+          - daily
+          - rotate 7
+          - missingok
+          - compress
+          - delaycompress
+          - copytruncate
+  roles:
+    - name: Install openjdk
+      role: openjdk
+      openjdk_version: 8
+    - name: Run jar
+      role: run_jar
+    - name: logrotate
+      role: ansible-logrotate
+    - name: Install and start nginx
+      role: nginx

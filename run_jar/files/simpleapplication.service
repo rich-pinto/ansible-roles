@@ -1,0 +1,8 @@
+[Unit]
+Description=SimpleApplication Running on port 4000, admin port 4010
+
+[Service]
+ExecStart=/bin/bash -c '/usr/bin/java -jar /home/halodoc/deploy/simple-application.jar server /home/halodoc/deploy/simple.yml 2>&1 >> /var/log/simpleapplication.log'
+
+[Install]
+WantedBy=multi-user.target
