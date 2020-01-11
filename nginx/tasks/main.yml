@@ -5,3 +5,13 @@
       service:
           name: nginx
           state: started
+    - name: Create default nginx site
+      copy: src=default dest=/etc/nginx/sites-available/
+    - name: Change file permissions
+      file:
+        path: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: '0644'
+      notify:
+        - 'Test nginx and restart'
