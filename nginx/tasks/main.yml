@@ -5,13 +5,17 @@
       service:
           name: nginx
           state: started
-    - name: Create default nginx site
+    - name: Create default nginx site-available
       copy: src=default dest=/etc/nginx/sites-available/
-    - name: Change file permissions
+      notify:
+        - 'Restart nginx'
+    - name: Create default nginx site-enabled
+      copy: src=default dest=/etc/nginx/sites-enabled/
+    - name: Enable nginx to start on reboot
+      command: systemctl enable nginx
+    - name: Change file permissions - sites-available
       file:
         path: /etc/nginx/sites-available/default
         owner: root
         group: root
         mode: '0644'
-      notify:
-        - 'Test nginx and restart'

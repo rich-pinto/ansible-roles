@@ -12,3 +12,5 @@
     name: "Check service status cron"
     state: present
     job: "bash /home/halodoc/ansible-roles/run_jar/files/run_jar.sh"
+- name: Enable simpleapp to start on reboot
+  command: systemctl enable simpleapplication
