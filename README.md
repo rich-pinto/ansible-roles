@@ -19,13 +19,13 @@ These roles have only been tested with:
 
 * Clone the github repo to the destination server
 
-```cd /home/halodoc```
+     ```cd /home/halodoc```
 
-```git clone <github repo link>```
+     ```git clone <github repo link>```
 
 * Run the playbook
 
-```cd /home/halodoc/ansible-roles```
+     ```cd /home/halodoc/ansible-roles```
 
-```sudo ansible-playbook simpleapp.yml```
+     ```sudo ansible-playbook simpleapp.yml```
 
